@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <h1>Gästebuch:</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <b>Nr.:</b>
+            </div>
+            <div class="col-sm-2">
+                <b>Benutzer:</b>
+            </div>
+            <div class="col-sm-4">
+                <b>Nachricht:</b>
+            </div>
+            <div class="col-sm-2">
+                <b>Datum:</b>
+            </div>
+            <div class="col-sm-2">
+                <b> </b>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    {% for guestbook in guestbooks %}
+        <div class="row">
+            <div class="col-sm-2">
+                {{ guestbook.id }}
+            </div>
+            <div class="col-sm-2">
+                {{ guestbook.user }}
+            </div>
+            <div class="col-sm-4">
+                {{ guestbook.message }}
+            </div>
+            <div class="col-sm-2" style="white-space: nowrap">
+                {{ guestbook.date|date('Y-m-d H:i:s') }}
+            </div>
+            <div class="col-sm-2">
+                {% if is_granted('ROLE_ADMIN') or app.user.username == guestbook.user %}
+                <a href="{{ path('guestbook_edit', { 'id': guestbook.id }) }}">bearbeiten</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container" align="center">
+        <a href="guestbook/new"><b>Neue Nachricht schreiben</b></a>
+    </div>
+{% endblock %}

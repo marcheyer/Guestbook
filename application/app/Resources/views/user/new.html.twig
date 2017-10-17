@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Benutzer anlegen{% endblock %}
+{% block body %}
+    <h2>Neuen Benutzer anlegen:</h2>
+    <hr>
+    <br>
+    <br>
+    {{ form_start(form) }}
+        <table width="30%">
+            <tr>
+                <td width="50%">
+                    {{ form_label(form.username) }}
+                </td>
+                <td width="50%">
+                    {{ form_widget(form.username) }}
+                    {{ form_errors(form.username) }}
+                </td>
+            </tr>
+            <tr>
+                <td width="50%">
+                    {{ form_label(form.password.first) }}
+                </td>
+                <td width="50%">
+                    {{ form_widget(form.password.first) }}
+                    {{ form_errors(form.password.first) }}
+                </td>
+            </tr><tr>
+                <td width="50%">
+                    {{ form_label(form.password.second) }}
+                </td>
+                <td width="50%">
+                    {{ form_widget(form.password.second) }}
+                    {{ form_errors(form.password.second) }}
+                </td>
+            </tr>
+            <tr>
+                <td width="50%">
+                    {{ form_label(form.email) }}
+                </td>
+                <td width="50%">
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
+                </td>
+            </tr>
+        </table>
+    <input type="submit" name="registerBtn" value="Benutzer anlegen">
+    {{ form_end(form) }}
+{% endblock %}
+{% block javascripts %}{% endblock %}

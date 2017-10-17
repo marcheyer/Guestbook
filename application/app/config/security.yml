@@ -1,0 +1,60 @@
+security:
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
+    providers:
+        our_db_provider:
+            entity:
+                class:    AppBundle:User
+                property: username
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        register:
+             pattern:  ^/register
+             security: false
+
+        main:
+            pattern:   ^/
+            provider:  our_db_provider
+            anonymous: ~
+
+            switch_user: true
+
+            form_login:
+                check_path:          /login
+                login_path:          /login
+                default_target_path: /guestbook
+                failure_path:        'login'
+                username_parameter:  username
+                password_parameter:  password
+                csrf_parameter:      _csrf_token
+                csrf_token_id:       authenticate
+                remember_me:         true
+
+            logout:
+                path: logout
+                target: /
+
+
+
+
+
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~
+    access_control:
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/guestbook, roles: ROLE_USER }
+
+    role_hierarchy:
+            ROLE_ADMIN: [ROLE_USER, ROLE_ALLOWED_TO_SWITCH]

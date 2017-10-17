@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <h1>Benutzer:</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <b>ID:</b>
+            </div>
+            <div class="col-sm-2">
+                <b>Benutzername:</b>
+            </div>
+            <div class="col-sm-2">
+                <b>E-Mail:</b>
+            </div>
+            <div class="col-sm-1">
+                <b>Aktiv:</b>
+            </div>
+            <div class="col-sm-2">
+                <b>erstellt am:</b>
+            </div>
+            <div class="col-sm-2">
+                <b>geändert am:</b>
+            </div>
+            <div class="col-sm-2">
+                <b> </b>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+    {% for user in users %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1">
+                    {{ user.id }}
+                </div>
+                <div class="col-sm-2">
+                    {{ user.username }}
+                </div>
+                <div class="col-sm-2">
+                    {{ user.email }}
+                </div>
+                <div class="col-sm-1">
+                    {{ user.active }}
+                </div>
+                <div class="col-sm-2">
+                    {{ user.createdAt|date('Y-m-d H:i:s') }}
+                </div>
+                <div class="col-sm-2">
+                    {{ user.updatedAt|date('Y-m-d H:i:s') }}
+                </div>
+                <div class="col-sm-2">
+                    <a href="{{ path('user_edit', { 'id': user.id }) }}">bearbeiten</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('user_index', {'_switch_user': user.username}) }}">impersonate</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

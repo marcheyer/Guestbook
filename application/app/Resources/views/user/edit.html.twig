@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <h1>Benutzer bearbeiten:</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        {{ form_start(edit_form) }}
+        <div class="row">
+            <div class="col-sm-2">
+                {{ form_label(edit_form.username) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_widget(edit_form.username) }}
+                {{ form_errors(edit_form.username) }}
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2" align="left">
+                {{ form_label(edit_form.password.first) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_widget(edit_form.password.first) }}
+                {{ form_errors(edit_form.password.first) }}
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2" align="left" style="white-space: nowrap">
+                {{ form_label(edit_form.password.second) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_widget(edit_form.password.second) }}
+                {{ form_errors(edit_form.password.second) }}
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2" align="left">
+                {{ form_label(edit_form.email) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_widget(edit_form.email) }}
+                {{ form_errors(edit_form.email) }}
+            </div>
+            <div class="col-sm-2">
+                <input name="edit" type="submit" value="bearbeiten">
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <a href="{{ path('user_index') }}">zurück zur Benutzerübersicht</a>
+                <br>
+                <br>
+                {{ form_start(delete_form) }}
+                    <input name="delete" type="submit" value="Benutzer löschen">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

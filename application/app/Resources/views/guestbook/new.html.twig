@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <h1>Gästebucheintrag anlegen</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-sm-2" align="center">
+                {{ form_label(form.message) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+            <div class="col-sm-2">
+                <input name="submit" type="submit" value="anlegen">
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <a href="{{ path('guestbook_index') }}">zurück zum Gästebuch</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+home:
+    path:     /
+    defaults: {_controller: "AppBundle:Default:index"}
+
+login:
+    path:     /login
+    defaults: {_controller: "AppBundle:Security:login"}
+
+logout:
+    path:     /guestbook/logout
+    defaults: {_controller: "AppBundle:Security:logout"}
+
+register:
+    path:     /register
+    defaults: {_controller: "AppBundle:User:new"}
+
+guestbook_index:
+    path:     /guestbook
+    defaults: {_controller: "AppBundle:Guestbook:index"}
+    methods:  [ GET ]
+
+guestbook_show:
+    path:     /guestbook/{id}/show
+    defaults: { _controller: "AppBundle:Guestbook:show" }
+    methods:  GET
+
+guestbook_new:
+    path:     /guestbook/new
+    defaults: { _controller: "AppBundle:Guestbook:new" }
+    methods:  [GET, POST]
+
+guestbook_edit:
+    path:     /guestbook/{id}/edit
+    defaults: { _controller: "AppBundle:Guestbook:edit" }
+
+guestbook_delete:
+    path:     /guestbook/{id}/delete
+    defaults: { _controller: "AppBundle:Guestbook:delete" }
+    methods:  DELETE
+
+user_index:
+    path:     /user/index
+    defaults: { _controller: "AppBundle:User:index"}
+
+user_show:
+    path:     /user/{id}/show
+    defaults: { _controller: "AppBundle:User:show"}
+
+user_edit:
+    path:     /user/{id}/edit
+    defaults: { _controller: "AppBundle:User:edit"}
+
+user_delete:
+    path:     /user/{id}/delete
+    defaults: { _controller: "AppBundle:User:delete"}

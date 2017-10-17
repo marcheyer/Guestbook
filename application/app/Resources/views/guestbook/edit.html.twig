@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <h1>Gästebucheintrag bearbeiten</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        {{ form_start(edit_form) }}
+        <div class="row">
+            <div class="col-sm-2" align="left">
+                {{ form_label(edit_form.message) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_widget(edit_form.message) }}
+                {{ form_errors(edit_form.message) }}
+            </div>
+            <div class="col-sm-2" align="right">
+                <input name="edit" type="submit" value="bearbeiten">
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
+    </div>
+    <div class="container">
+        {{ form_start(delete_form) }}
+            <div class="row" align="right">
+                <div class="col-sm-12">
+                    <input name="delete" type="submit" value="löschen">
+                </div>
+            </div>
+        {{ form_end(delete_form) }}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" align="center">
+                <a href="{{ path('guestbook_index') }}">zurück zum Gästebuch</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
