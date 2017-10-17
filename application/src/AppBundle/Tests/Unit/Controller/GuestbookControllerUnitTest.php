@@ -11,6 +11,12 @@ use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Controller\GuestbookController;
 
+/**
+ * Class GuestbookControllerUnitTest
+ * @package AppBundle\Tests\Controller
+ *
+ * @codeCoverageIgnore
+ */
 class GuestbookControllerUnitTest extends TestCase
 {
     /**
@@ -18,6 +24,9 @@ class GuestbookControllerUnitTest extends TestCase
      */
     protected $guestbookController;
 
+    /**
+     *
+     */
     protected function setUp()
     {
         $this->guestbookController = $this->getMockBuilder(GuestbookController::class)
@@ -26,6 +35,9 @@ class GuestbookControllerUnitTest extends TestCase
         $this->guestbookController->setContainer($this->getContainerMockWithDoctrineMock());
     }
 
+    /**
+     *
+     */
     public function testIndexAction()
     {
         $requestMock = $this->createMock(Request::class);
@@ -42,16 +54,25 @@ class GuestbookControllerUnitTest extends TestCase
         $callback = $this->guestbookController->indexAction($requestMock);
     }
 
+    /**
+     *
+     */
     public function newActionTest()
     {
 
     }
 
+    /**
+     *
+     */
     protected function tearDown()
     {
         $this->guestbookController = null;
     }
 
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
     private function getContainerMockWithDoctrineMock()
     {
         $conMock = $this->createMock(Container::class);
@@ -63,6 +84,9 @@ class GuestbookControllerUnitTest extends TestCase
         return $conMock;
     }
 
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
     private function getDoctrineServiceMock()
     {
         $docMock = $this->createMock(Registry::class);
@@ -71,6 +95,9 @@ class GuestbookControllerUnitTest extends TestCase
         return $docMock;
     }
 
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
     private function getObjectManagerMock()
     {
         $ormMock = $this->createMock(ObjectManager::class);
@@ -79,6 +106,9 @@ class GuestbookControllerUnitTest extends TestCase
         return $ormMock;
     }
 
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
     private function getRepositoryMock()
     {
         $repoMock = $this->createMock(GuestbookRepository::class);
@@ -88,6 +118,9 @@ class GuestbookControllerUnitTest extends TestCase
         return $repoMock;
     }
 
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
     private function getGuestbookMock()
     {
         $gbMock = $this->createMock(Guestbook::class);

@@ -4,6 +4,12 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class UserControllerTest
+ * @package AppBundle\Tests\Controller
+ *
+ * @codeCoverageIgnore
+ */
 class UserControllerTest extends WebTestCase
 {
     /*

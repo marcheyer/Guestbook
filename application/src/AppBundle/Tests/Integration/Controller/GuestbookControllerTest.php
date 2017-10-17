@@ -6,6 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpKernel\Client;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
+/**
+ * Class GuestbookControllerTest
+ * @package AppBundle\Tests\Controller
+ *
+ * @codeCoverageIgnore
+ */
 class GuestbookControllerTest extends WebTestCase
 {
     /**
@@ -13,12 +19,18 @@ class GuestbookControllerTest extends WebTestCase
      */
     private $client = null;
 
+    /**
+     *
+     */
     protected function setUp()
     {
         // Create a new client to browse the application
         $this->client = static::createClient();
     }
 
+    /**
+     *
+     */
     public function testNewAction()
     {
         $this->logIn();
@@ -34,6 +46,9 @@ class GuestbookControllerTest extends WebTestCase
     }
 
 
+    /**
+     *
+     */
     public function testCompleteScenario()
     {
 
